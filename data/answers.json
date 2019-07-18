@@ -1,0 +1,50 @@
+[
+  {
+    "_id": "123",
+    "student": "123",
+    "question": "321",
+    "trueFalseAnswer": true
+  },
+  {
+    "_id": "234",
+    "student": "123",
+    "question": "432",
+    "trueFalseAnswer": false
+  },
+  {
+    "_id": "345",
+    "student": "123",
+    "question": "543",
+    "multipleChoiceAnswer": 1
+  },
+  {
+    "_id": "456",
+    "student": "123",
+    "question": "654",
+    "multipleChoiceAnswer": 2
+  },
+  {
+    "_id": "567",
+    "student": "234",
+    "question": "321",
+    "trueFalseAnswer": false
+  },
+  {
+    "_id": "678",
+    "student": "234",
+    "question": "432",
+    "trueFalseAnswer": true
+  },
+  {
+    "_id": "789",
+    "student": "234",
+    "question": "543",
+    "multipleChoiceAnswer": 3
+  },
+  {
+    "_id": "890",
+    "student": "234",
+    "question": "654",
+    "multipleChoiceAnswer": 4
+  }
+]

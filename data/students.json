@@ -1,0 +1,20 @@
+[
+  {
+    "_id": "123",
+    "firstName": "Alice",
+    "lastName": "Wonderland",
+    "username": "alice",
+    "password": "alice",
+    "gradYear": 2020,
+    "scholarship": 15000
+  },
+  {
+    "_id": "234",
+    "firstName": "Bob",
+    "lastName": "Hope",
+    "username": "bob",
+    "password": "bob",
+    "gradYear": 2021,
+    "scholarship": 12000
+  }
+]
