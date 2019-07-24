@@ -67,17 +67,17 @@ function answerQuestion(studentId, questionId, answer) {
     let question = this.findQuestionById(questionId);
     if (question.type === "TRUE_FALSE") {
         answers.push({
-            _id: answer.id,
+            _id: answer._id,
             student: studentId,
             question: questionId,
-            trueFalseAnswer: answer.answer
+            trueFalseAnswer: answer.trueFalseAnswer
         })
     } else {
         answers.push({
-            _id: answer.id,
+            _id: answer._id,
             student: studentId,
             question: questionId,
-            multipleChoiceAnswer: answer.answer
+            multipleChoiceAnswer: answer.multipleChoiceAnswer
         })
     }
 }
