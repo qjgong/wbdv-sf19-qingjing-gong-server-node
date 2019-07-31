@@ -1,5 +1,5 @@
 module.exports = function (app) {
-    var universityDao = require('../data/daos/university.dao.server.js')
+    var universityDao = require('../daos/university.dao.server.js')
 
     function createStudent(req, res) {
         res.send(universityDao.createStudent(req.body))

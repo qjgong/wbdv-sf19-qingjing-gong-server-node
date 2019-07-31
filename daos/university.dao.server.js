@@ -1,6 +1,6 @@
-let students = require('../students.json');
-let questions = require('../questions.json');
-let answers = require('../answers.json');
+let students = require('../data/students.json');
+let questions = require('../data/questions.json');
+let answers = require('../data/answers.json');
 
 function createStudent(student) {
     students.push(student);
