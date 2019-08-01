@@ -96,9 +96,9 @@ module.exports = function (app) {
 
     app.post("/api/questions", createQuestion);
     app.get("/api/questions", findAllQuestions);
-    app.get("/api/question/:qid", findQuestionById);
-    app.put("/api/question/:qid", updateQuestion);
-    app.delete("/api/question/:qid", deleteQuestion);
+    app.get("/api/questions/:qid", findQuestionById);
+    app.put("/api/questions/:qid", updateQuestion);
+    app.delete("/api/questions/:qid", deleteQuestion);
 
     app.get("/api/answers",findAllAnswers);
     app.post("/api/students/:sid/questions/:qid/answers", studentAnswerQuestion);
