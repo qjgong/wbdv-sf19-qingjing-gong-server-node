@@ -8,11 +8,11 @@ module.exports = function (app) {
     }
 
     function updateStudent(req, res) {
-        res.send(universityDao.updateStudent(req.params['sid'], req.body))
+        universityDao.updateStudent(req.params['sid'], req.body).then(x=>res.send(x))
     }
 
     function deleteStudent(req, res) {
-        res.send(universityDao.deleteStudent(req.params['sid']))
+       universityDao.deleteStudent(req.params['sid']).then(x=>res.send(x))
     }
 
     function findAllStudents(req, res) {
@@ -28,55 +28,59 @@ module.exports = function (app) {
     }
 
     function createQuestion(req, res) {
-        res.send(universityDao.createQuestion(req.body))
+        universityDao.createQuestion(req.body).then(x=>res.send(x))
     }
 
     function findAllQuestions(req, res) {
-        res.send(universityDao.findAllQuestions())
+        universityDao.findAllQuestions().then(x=>{
+            res.send(x)
+        })
     }
 
     function findQuestionById(req, res) {
-        res.send(universityDao.findQuestionById(req.params['qid']))
+       universityDao.findQuestionById(req.params['qid']).then(x=>res.send(x))
     }
 
     function updateQuestion(req, res) {
-        res.send(universityDao.updateQuestion(req.params['qid'], req.body))
+        universityDao.updateQuestion(req.params['qid'], req.body).then(x=>res.send(x))
     }
 
     function deleteQuestion(req, res) {
-        res.send(universityDao.deleteQuestion(req.params['qid']))
+        universityDao.deleteQuestion(req.params['qid']).then(x=>res.send(x))
     }
 
     function studentAnswerQuestion(req, res) {
-        res.send(universityDao.answerQuestion(req.params['sid'], req.params['qid'], req.body))
+        universityDao.answerQuestion(req.params['sid'], req.params['qid'], req.body).then(x=>res.send(x))
     }
 
     function findAllAnswers(req, res) {
-        res.send(universityDao.findAllAnswers())
+        universityDao.findAllAnswers().then(x=>{
+            res.send(x)
+        })
     }
 
     function findAnswerById(req, res) {
-        res.send(universityDao.findAnswerById(req.params['aid']))
+        universityDao.findAnswerById(req.params['aid']).then(x=>res.send(x))
     }
 
     function getAllAnswersForQuestion(req, res) {
-        res.send(universityDao.findAnswersByQuestion(req.params['qid']))
+        universityDao.findAnswersByQuestion(req.params['qid']).then(x=>res.send(x))
     }
 
     function getAllAnswersForStudent(req, res) {
-        res.send(universityDao.findAnswersByStudent(req.params['sid']))
+        runiversityDao.findAnswersByStudent(req.params['sid']).then(x=>res.send(x))
     }
 
     function getAnswersForStudentAndQuestion(req, res) {
-        res.send(universityDao.findAnswersByStudentAndQuestion(req.params['sid'], req.params['qid']))
+        universityDao.findAnswersByStudentAndQuestion(req.params['sid'], req.params['qid']).then(x=>res.send(x))
     }
 
     function truncateDatabase(req,res){
-        res.send(universityDao.truncateDatabase())
+       universityDao.truncateDatabase().then(x=>res.send(x))
     }
 
     function populateDatabase(req,res){
-        res.send(universityDao.populateDatabase())
+      universityDao.populateDatabase().then(x=>res.send(x))
     }
 
     //tested
@@ -96,6 +100,7 @@ module.exports = function (app) {
     app.put("/api/question/:qid", updateQuestion);
     app.delete("/api/question/:qid", deleteQuestion);
 
+    app.get("/api/answers",findAllAnswers);
     app.post("/api/students/:sid/questions/:qid/answers", studentAnswerQuestion);
     app.get("/api/students/:sid/questions/:qid/answers", getAnswersForStudentAndQuestion);
     app.get("/api/questions/:qid/students/:sid/answers", getAnswersForStudentAndQuestion);

@@ -4,7 +4,7 @@ const quizWidgetModel = require("../models/quiz-widget.model.server");
 const answerModel = require("../models/answer.model.server");
 
 createStudent = student => studentModel.create(student);
-findAllStudents = () => studentModel.find();
+findAllStudents = () => studentModel.find().sort({"_id":1});
 findStudentById = studentId => studentModel.findById(studentId);
 
 updateStudent = (studentId, student) => studentModel.update({_id: studentId}, {$set: student});
@@ -14,9 +14,9 @@ deleteStudent = studentId => studentModel.remove({_id: studentId});
 createQuestion = question => questionModel.create(question);
 findQuestionById = questionID => questionModel.findById(questionID);
 deleteQuestion = questionId => questionModel.remove({_id: questionId});
-findAllQuestions = () => questionModel.find();
+findAllQuestions = () => questionModel.find().sort({"_id":1});
 createWidget = widget => quizWidgetModel.create(widget);
-findAllAnswers = () => answerModel.find();
+findAllAnswers = () => answerModel.find().sort({"_id":1});
 findAnswerById = answerId => answerModel.findById(answerId);
 deleteAnswer = answerId => answerModel.remove({_id: answerId});
 findAnswersByStudent = (studentId) => answerModel.find({student: studentId});
@@ -47,10 +47,13 @@ truncateDatabase = () => {
 
 populateDatabase = () => {
     let alice = createStudent({
+
         _id: 123,
         firstName: "Alice", lastName: "Wonderland", username: "alice",
         password: "alice", gradYear: 2020, scholarship: 15000
-    });
+    }
+
+    );
 
     let bob = createStudent({
         _id: 234,
@@ -95,9 +98,9 @@ populateDatabase = () => {
             correct: 4
         }
     });
-
     return new Promise(function (resolve, reject) {
         Promise.all([alice, bob, q1, q2, q3, q4]).then(function (values) {
+
             let alice_id = 123;
             let bob_id = 234;
             let schema_valid_id = 321;
@@ -143,6 +146,7 @@ populateDatabase = () => {
                 _id: 890,
                 multipleChoiceAnswer: 4
             });
+
             Promise.all([
                 answer1,
                 answer2,
@@ -156,6 +160,7 @@ populateDatabase = () => {
             });
         });
     });
+
 };
 module.exports = {
     //student
