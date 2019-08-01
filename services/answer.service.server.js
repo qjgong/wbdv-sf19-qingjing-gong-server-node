@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const answerSchema = require('../models/answer.schema.server.js')
+const answerSchema = require('../data/models/answer.schema.server.js')
 const answerModel = mongoose.model('AnswerModel', answerSchema)
 
 module.exports = function(app) {

@@ -7,10 +7,7 @@ var studentSchema = mongoose.Schema({
 	firstName: String,
 	lastName: String,
 	gradYear: Number,
-	gpa: Number,
-	dob: Date,
 	scholarship: Number,
-	createdAt: {type: Date, default: Date.now}
-}, {collection: 'users'});
+}, {collection: 'students'});
 
 module.exports = studentSchema;
