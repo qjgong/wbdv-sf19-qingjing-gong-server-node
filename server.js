@@ -12,6 +12,7 @@ app.use(session({
     secret: 'shhh, dont tell anyone'
 }));
 
+
 // var mongoose = require('mongoose')
 //
 // mongoose.connect('mongodb://localhost:27017/webdev-su19', {useNewUrlParser: true});
