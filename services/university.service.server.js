@@ -83,6 +83,10 @@ module.exports = function (app) {
       universityDao.populateDatabase().then(x=>res.send(x))
     }
 
+    function createWidget(req,res){
+       res.send(universityDao.createWidget(universityDao.findAllQuestions))
+    }
+
     //tested
     app.delete("/api/all", truncateDatabase);
     app.post("/api/populate", populateDatabase);
@@ -104,5 +108,7 @@ module.exports = function (app) {
     app.post("/api/students/:sid/questions/:qid/answers", studentAnswerQuestion);
     app.get("/api/students/:sid/questions/:qid/answers", getAnswersForStudentAndQuestion);
     app.get("/api/questions/:qid/students/:sid/answers", getAnswersForStudentAndQuestion);
+
+    app.post("/api/widget",createWidget);
 
 };

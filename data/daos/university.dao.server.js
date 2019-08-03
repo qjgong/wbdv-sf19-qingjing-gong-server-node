@@ -15,7 +15,20 @@ createQuestion = question => questionModel.create(question);
 findQuestionById = questionID => questionModel.findById(questionID);
 deleteQuestion = questionId => questionModel.remove({_id: questionId});
 findAllQuestions = () => questionModel.find().sort({"_id":1});
-createWidget = widget => quizWidgetModel.create(widget);
+createWidget = ()=> {
+    return new Promise(function(resolve,reject){
+        Promise.all(
+            findAllQuestions.exec(),
+        ).then(function(values){
+           console.log(values);
+            quizWidgetModel.create(values).then(function(){
+                resolve("createWidget")
+            })
+        })
+
+    })
+};
+
 findAllAnswers = () => answerModel.find().sort({"_id":1});
 findAnswerById = answerId => answerModel.findById(answerId);
 deleteAnswer = answerId => answerModel.remove({_id: answerId});
@@ -186,5 +199,8 @@ module.exports = {
 
     populateDatabase,
     truncateDatabase,
+
+    //widget
+    createWidget,
 };
 
