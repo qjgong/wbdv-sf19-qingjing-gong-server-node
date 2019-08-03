@@ -7,13 +7,12 @@ module.exports = function () {
     if (process.env.MLAB_USERNAME_WEBDEV) {
         var username = process.env.MLAB_USERNAME_WEBDEV;
         var password = process.env.MLAB_PASSWORD_WEBDEV;
-        connectionString = z
+        connectionString = 'mongodb://' + username + ':' + password;
         connectionString += '@ds247637.mlab.com:47637/heroku_tvjcd4bj';
         //username:admin
-        //password:admin
+        //password:admin12345
     }
 
-   // connectionString = "mongodb://admin:admin12345@ds247637.mlab.com:47637/heroku_tvjcd4bj"
 
     mongoose.connect(connectionString, {useNewUrlParser: true});
 };
