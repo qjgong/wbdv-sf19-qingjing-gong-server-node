@@ -84,7 +84,7 @@ module.exports = function (app) {
     }
 
     function createWidget(req,res){
-       res.send(universityDao.createWidget(universityDao.findAllQuestions))
+       universityDao.createWidget().then(x=>res.send(x))
     }
 
     //tested

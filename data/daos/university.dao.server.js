@@ -4,7 +4,7 @@ const quizWidgetModel = require("../models/quiz-widget.model.server");
 const answerModel = require("../models/answer.model.server");
 
 createStudent = student => studentModel.create(student);
-findAllStudents = () => studentModel.find().sort({"_id":1});
+findAllStudents = () => studentModel.find().sort({"_id": 1});
 findStudentById = studentId => studentModel.findById(studentId);
 
 updateStudent = (studentId, student) => studentModel.update({_id: studentId}, {$set: student});
@@ -14,22 +14,9 @@ deleteStudent = studentId => studentModel.remove({_id: studentId});
 createQuestion = question => questionModel.create(question);
 findQuestionById = questionID => questionModel.findById(questionID);
 deleteQuestion = questionId => questionModel.remove({_id: questionId});
-findAllQuestions = () => questionModel.find().sort({"_id":1});
-createWidget = ()=> {
-    return new Promise(function(resolve,reject){
-        Promise.all(
-            findAllQuestions.exec(),
-        ).then(function(values){
-           console.log(values);
-            quizWidgetModel.create(values).then(function(){
-                resolve("createWidget")
-            })
-        })
-
-    })
-};
-
-findAllAnswers = () => answerModel.find().sort({"_id":1});
+findAllQuestions = () => questionModel.find().sort({"_id": 1});
+createWidget =(widget)=>quizWidgetModel.create(widget);
+findAllAnswers = () => answerModel.find().sort({"_id": 1});
 findAnswerById = answerId => answerModel.findById(answerId);
 deleteAnswer = answerId => answerModel.remove({_id: answerId});
 findAnswersByStudent = (studentId) => answerModel.find({student: studentId});
@@ -61,11 +48,10 @@ truncateDatabase = () => {
 populateDatabase = () => {
     let alice = createStudent({
 
-        _id: 123,
-        firstName: "Alice", lastName: "Wonderland", username: "alice",
-        password: "alice", gradYear: 2020, scholarship: 15000
-    }
-
+            _id: 123,
+            firstName: "Alice", lastName: "Wonderland", username: "alice",
+            password: "alice", gradYear: 2020, scholarship: 15000
+        }
     );
 
     let bob = createStudent({
